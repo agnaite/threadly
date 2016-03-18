@@ -11,7 +11,9 @@
     <h1>Threadly</h1>
   </header>
 
-<%= yield %>
+  <div class="error"> <%= flash[:notice] %> </div>
+
+  <%= yield %>
 
 </body>
 </html>

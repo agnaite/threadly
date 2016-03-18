@@ -21,6 +21,13 @@ header {
   background-color: $purple;
 }
 
+.error {
+  position: relative;
+  text-align: center;
+  color: tomato;
+  padding-top: 20px;
+}
+
 .container {
   margin-top: 30px;
   display: block;

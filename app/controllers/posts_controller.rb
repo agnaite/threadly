@@ -7,6 +7,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
       if @post.save
         redirect_to '/'
+      else
+        redirect_to '/', notice: 'Comment cannot be blank.'
       end
   end
   private
