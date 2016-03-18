@@ -1,0 +1,18 @@
+<div class="container">
+  <h4>Enter new post: </h4>
+  <%= form_for @post do |f| %>
+    <div class="new_post">
+      <%= f.text_area :comment, :class => "text-box" %>
+    </div>
+    <div class="actions">
+      <button class="btn"><%= f.submit "Create", class: "rails-btn" %></button>
+    </div>
+  <% end %>
+  <ul class="posts">
+    <% @all_posts.each do |p| %>
+      <li><%= p.comment %><br>
+          <span class="timestamp"><%= p.created_at%></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

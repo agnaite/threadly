@@ -1,0 +1,83 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$purple: #6B80D7;
+$off-white: #fafafa;
+$text-gray: #333333;
+
+* {
+  margin: 0;
+  font-family: 'Menlo';
+  box-shadow: none;
+  outline: none;
+}
+
+header {
+  padding: 10px 10px 5px 10px;
+  color: $off-white;
+  width: 100%;
+  border-bottom: 4px solid $purple;
+  background-color: $purple;
+}
+
+.container {
+  margin-top: 30px;
+  display: block;
+  padding-left: 10px;
+  color: $text-gray;
+
+  h4 {
+    padding-left: 4px;
+    color: darken($off-white, 48%);
+  }
+
+  .text-box{
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 10px;
+    width: 400px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    background-color: $off-white;
+  }
+
+  .btn {
+    margin: 0 auto;
+    cursor: pointer;
+    width: 418px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 10px 0 40px 0;
+    font-family: 'Menlo';
+    background-color: $purple;
+    border: 1px solid $purple;
+
+  }
+
+  .rails-btn {
+    border: none;
+    font-size: 1.5em;
+    color: $off-white;
+    background-color: $purple;
+  }
+
+  ul {
+    list-style: none;
+    padding: 10px;
+    color: $text-gray;
+
+    li {
+      margin-bottom: 12px;
+      padding-left: 6px;
+      border-left: 3px solid $purple;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: #aaa;
+    }
+  }
+
+}
