@@ -85,6 +85,19 @@ header {
       font-size: 12px;
       color: #aaa;
     }
+
+    .delete {
+      font-size: 0.7em;
+      padding: 2px 4px;
+      border: 1px solid $purple;
+      border-radius: 4px;
+      background-color: $purple;
+
+      a {
+        text-decoration: none;
+        color: $off-white;
+      }
+    }
   }
 
 }
