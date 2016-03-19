@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  database: young-chamber-68397
+  database: <%= ENV['DATABASE_URL'] %>
