@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  database: my_database_production
+  database: young-chamber-68397
