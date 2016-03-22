@@ -18,6 +18,20 @@ $desktop: 1024px;
   outline: none;
 }
 
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=submit],
+input[type=button] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+}
+
 header {
   padding: 10px 10px 5px 10px;
   color: $off-white;
@@ -89,13 +103,6 @@ header {
       max-width: 360px;
     }
   }
-
-  // .rails-btn {
-  //   border: none;
-  //   font-size: 1.5em;
-  //   color: $off-white;
-  //   background-color: $purple;
-  // }
 
   ul {
     list-style: none;
