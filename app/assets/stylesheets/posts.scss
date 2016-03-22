@@ -82,32 +82,20 @@ header {
     font-family: 'Menlo';
     background-color: $purple;
     border: 1px solid $purple;
+    font-size: 1.2em;
+    color: $off-white;
 
     @media (max-width: $phone) {
       max-width: 360px;
-
-      &::after {
-        content: "Create";
-        color: $off-white;
-        font-size: 1.5em;
-        position: fixed;
-        padding-top: 2px;
-        right: 170px;
-      }
     }
   }
 
-  .rails-btn {
-    border: none;
-    font-size: 1.5em;
-    color: $off-white;
-    background-color: $purple;
-
-    @media (max-width: $phone) {
-      display: inline;
-      opacity: 0;
-    }
-  }
+  // .rails-btn {
+  //   border: none;
+  //   font-size: 1.5em;
+  //   color: $off-white;
+  //   background-color: $purple;
+  // }
 
   ul {
     list-style: none;
