@@ -10,11 +10,11 @@
   <% end %>
   <ul class="posts">
     <% @all_posts.each do |p| %>
-      <li><%= p.comment %><br>
-          <span class="timestamp"><%= p.created_at%></span>
-          <span class="delete">
-            <%= link_to 'Destroy', p, method: :delete, data: {confirm: 'Are you sure?' } %>
-          </span>
+      <li><%= auto_link(p.comment) %><br>
+        <span class="timestamp"><%= p.created_at%></span>
+        <span class="delete">
+          <%= link_to 'Destroy', p, method: :delete, data: {confirm: 'Are you sure?' } %>
+        </span>
       </li>
     <% end %>
   </ul>
