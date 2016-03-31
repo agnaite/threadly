@@ -45,9 +45,7 @@ header {
       width: 100%;
       padding: 0;
       text-align: center;
-
     }
-
     a {
       color: $off-white;
       font-weight: 700;
@@ -55,7 +53,6 @@ header {
       &:hover {
         text-decoration: none;
       }
-
     }
   }
 
@@ -100,7 +97,7 @@ header {
         float: none;
         display: inline-block;
         padding: 0 0 10px 0;
-        margin-left: 20px;
+        margin: -5px 5px 0 5px;
 
       }
     }
