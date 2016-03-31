@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     # return the current user or a new "blank" user
-    @current_user = User.find_by_id(session[:user_id]) || User.new(first_name: 'nobody')
+    @current_user = User.find_by_id(session[:user_id])
   end
 
   def logged_in?
-    current_user.nil? || current_user.id.nil?
+    !current_user.nil?
   end
 
   def require_user
