@@ -26,9 +26,15 @@
           </span>
 
         <% else %>
-          <span class="user">posted by <%= p.user.first_name.capitalize.strip %>
-          <span class="timestamp">on <%= p.created_at%></span></span>
-
+          <span class="user">
+            posted
+            <% unless p.user.nil? %>
+              by <%= p.user.first_name.capitalize.strip %>
+            <% end %>
+            <span class="timestamp">
+              on <%= p.created_at%>
+            </span>
+          </span>
         <% end %>
       </li>
     <% end %>
