@@ -41,6 +41,13 @@ header {
   .navbar-brand {
     font-size: 32px;
 
+    @media (max-width: $phone) {
+      width: 100%;
+      padding: 0;
+      text-align: center;
+
+    }
+
     a {
       color: $off-white;
       font-weight: 700;
@@ -48,6 +55,7 @@ header {
       &:hover {
         text-decoration: none;
       }
+
     }
   }
 
@@ -78,6 +86,22 @@ header {
           color: $green;
           background-color: $purple;
         }
+      }
+    }
+
+    @media (max-width: $phone) {
+      padding: 0;
+      .nav-name {
+        padding: 0 0 10px 0;
+        float: none;
+        display: inline-block;
+      }
+      .nav-action {
+        float: none;
+        display: inline-block;
+        padding: 0 0 10px 0;
+        margin-left: 20px;
+
       }
     }
   }
@@ -113,6 +137,7 @@ header {
     width: 100%;
     text-align: center;
     padding: 10px 0 5px 0;
+    margin-top: 20px;
   }
 
   .post-wrapper {
