@@ -17,7 +17,7 @@
     <div class="container-fluid">
       <h1 class="navbar-brand"><%= link_to "Threadly", '/' %></h1>
 
-      <% if current_user %>
+      <% if logged_in? %>
         <ul class="nav nav-pills navbar-right">
           <li class="nav-name" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Number of posts: <%= current_user.posts.length %>">Hi, <%= current_user.first_name.capitalize %>!</li>
           <li class="nav-action"><%= link_to "Log out", logout_path, method: "delete" %></li>
