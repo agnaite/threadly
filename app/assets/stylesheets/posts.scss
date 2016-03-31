@@ -5,18 +5,14 @@
 $purple: #6B80D7;
 $off-white: #fafafa;
 $text-gray: #333333;
+$green: #69F0AE;
 
 // breakpoints:
 $phone: 640px;
 $tablet: 768px;
 $desktop: 1024px;
 
-* {
-  margin: 0;
-  font-family: 'Menlo';
-  box-shadow: none;
-  outline: none;
-}
+@import '_flex-mixin';
 
 input[type=text],
 input[type=email],
@@ -32,18 +28,69 @@ input[type=button] {
   -webkit-border-radius: 0;
 }
 
+* {
+  font-family: 'Lato', Arial, serif; font-weight: 400;
+}
+
 header {
-  padding: 10px 10px 5px 10px;
   color: $off-white;
   width: 100%;
-  border-bottom: 4px solid $purple;
   background-color: $purple;
+  margin-top: -10px;
+
+  .navbar-brand {
+    font-size: 32px;
+
+    a {
+      color: $off-white;
+      font-weight: 700;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .nav {
+    padding-right: 30px;
+
+    .nav-name {
+      padding-top: 35px;
+
+      &:hover {
+        cursor: pointer;
+        color: $green;
+      }
+    }
+    .nav-action {
+      padding-left: 20px;
+      padding-top: 30px;
+
+      a {
+        text-decoration: none;
+        color: white;
+        padding: 4px 20px;
+        border: 1px solid white;
+        border-radius: 4px;
+
+        &:hover {
+          border-color: $green;
+          color: $green;
+          background-color: $purple;
+        }
+      }
+    }
+  }
 
   @media (max-width: $phone) {   //and (max-width: 1023px)
     width: 100%;
     text-align: center;
     padding: 10px 0 5px 0;
     margin: 0;
+
+    .nav {
+      width: 100%;
+    }
   }
 }
 
@@ -54,10 +101,12 @@ header {
   padding-top: 20px;
 }
 
-.container {
-  margin-top: 20px;
-  display: block;
-  padding-left: 20px;
+.container-main {
+  @include displayFlex;
+  @include flexDirection(column);
+  @include flexAlignItems(center);
+
+  margin-top: 40px;
   color: $text-gray;
 
   @media (max-width: $phone) {   //and (max-width: 1023px)
@@ -66,76 +115,97 @@ header {
     padding: 10px 0 5px 0;
   }
 
-  h4 {
-    padding-left: 4px;
-    color: darken($off-white, 48%);
-  }
+  .post-wrapper {
+    h4 {
+      color: $purple;
+    }
 
-  .text-box{
-    font-size: 18px;
-    padding: 10px;
-    margin-top: 10px;
-    width: 400px;
-    height: 60px;
-    border: none;
-    border-radius: 10px;
-    background-color: $off-white;
+    .text-box {
+      font-size: 18px;
+      padding: 10px;
+      margin-top: 10px;
+      width: 400px;
+      height: 100px;
+      border: none;
+      border-radius: 10px;
+      background-color: $off-white;
 
-    @media (max-width: $phone) {
-      max-width: 360px;
+      &:focus {
+        outline: 0;
+        outline: 1px solid $green;
+      }
+
+      @media (max-width: $phone) {
+        max-width: 360px;
+      }
     }
   }
 
   .btn {
     margin: 0 auto;
     cursor: pointer;
-    width: 418px;
-    height: 40px;
     border-radius: 10px;
     margin: 10px 0 40px 0;
-    font-family: 'Menlo';
-    background-color: $purple;
     border: 1px solid $purple;
     font-size: 1.2em;
-    color: $off-white;
+    color: $purple;
+    background-color: white;
+
+    &:hover {
+      border-color: $green;
+      color: $green;
+    }
 
     @media (max-width: $phone) {
       max-width: 360px;
     }
   }
 
-  ul {
+  .posts {
     list-style: none;
     padding: 10px;
     color: $text-gray;
+    margin-left: -80px;
 
     @media (max-width: $phone) {
       text-align: left;
     }
 
     li {
-      margin-bottom: 12px;
+      font-family: 'Menlo';
+      font-size: 18px;
       padding-left: 6px;
+      margin-bottom: 12px;
       border-left: 3px solid $purple;
     }
 
-    .timestamp {
+    .timestamp,
+    .user {
       font-size: 12px;
+      font-weight: 300;
       color: #aaa;
-    }
 
+      #user-post {
+        color: $purple;
+      }
+    }
     .delete {
-      font-size: 0.7em;
+      display: inline;
+      font-size: 10px;
       padding: 2px 4px;
       border: 1px solid $purple;
       border-radius: 4px;
-      background-color: $purple;
-
       a {
         text-decoration: none;
-        color: $off-white;
+        color: $purple;
+      }
+
+      &:hover {
+        border-color: $green;
+        a {
+          color: $green;
+        }
       }
     }
   }
-
 }

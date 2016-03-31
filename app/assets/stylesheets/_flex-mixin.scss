@@ -1,0 +1,222 @@
+// Mixins
+//******************************************************
+
+//Display Flex
+@mixin displayFlex {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+//Flex Direction
+@mixin flexDirection($flexDirection) {
+
+	@if $flexDirection == "row" {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+		flex-direction: row;
+	} @else if $flexDirection == "column" {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	} @else {
+	@error "Whooops no value could be found for flexDirection #{$flexDirection}";
+	}
+}
+//Flex Wrap
+@mixin flexWrap($flexWrap) {
+
+	@if $flexWrap == "nowrap" {
+		-webkit-flex-wrap: nowrap;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+	} @else if $flexWrap == "wrap" {
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+	} @else if $flexWrap == "wrap-reverse" {
+		-webkit-flex-wrap: wrap-reverse;
+		-ms-flex-wrap: wrap-reverse;
+		flex-wrap: wrap-reverse;
+	} @else {
+	@error "Whooops no value could be found for flexWrap #{$flexWrap}";
+	}
+}
+//Flex Flow
+@mixin flexFlow($direction, $wrap) {
+
+	@if ($direction == "row") && ($wrap == "nowrap") {
+		-webkit-flex-flow: row nowrap;
+		-ms-flex-flow: row nowrap;
+		flex-flow: row nowrap;
+	} @else if ($direction == "row") && ($wrap == "wrap") {
+		-webkit-flex-wrap: row wrap;
+		-ms-flex-wrap: row wrap;
+		flex-wrap: row wrap;
+	} @else if ($direction == "row") && ($wrap == "wrap-reverse") {
+		-webkit-flex-wrap: row wrap-reverse;
+		-ms-flex-wrap: row wrap-reverse;
+		flex-wrap: row wrap-reverse;
+	} @else {
+	@error "Whooops no value could be found for flexFlow #{$flexFlow}";
+	}
+}
+//Justify Content
+@mixin flexJustifyContent($justifyContent) {
+
+	@if $justifyContent == "flex-start" {
+		-webkit-box-pack: start;
+		-webkit-justify-content: flex-start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	} @else if $justifyContent == "flex-end" {
+		-webkit-box-pack: end;
+		-webkit-justify-content: flex-end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+	} @else if $justifyContent == "center" {
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	} @else if $justifyContent == "space-between" {
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	} @else if $justifyContent == "space-around" {
+		-webkit-justify-content: space-around;
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+	} @else {
+	@error "Whooops no value could be found for justifyContent #{$justifyContent}";
+	}
+}
+//Align Items
+@mixin flexAlignItems($alignItems) {
+
+	@if $alignItems == "flex-start" {
+		-webkit-box-align: start;
+		-webkit-align-items: flex-start;
+		-ms-flex-align: start;
+		align-items: flex-start;
+	} @else if $alignItems == "flex-end" {
+		-webkit-box-align: end;
+		-webkit-align-items: flex-end;
+		-ms-flex-align: end;
+		align-items: flex-end;
+	} @else if $alignItems == "center" {
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+	} @else if $alignItems == "stretch" {
+		-webkit-box-align: stretch;
+		-webkit-align-items: stretch;
+		-ms-flex-align: stretch;
+		align-items: stretch;
+	} @else if $alignItems == "baseline" {
+		-webkit-box-align: baseline;
+		-webkit-align-items: baseline;
+		-ms-flex-align: baseline;
+		align-items: baseline;
+	} @else {
+	@error "Whooops no value could be found for alignItems #{$alignItems}";
+	}
+}
+//Align Content
+@mixin flexAlignContent($alignContent) {
+
+	@if $alignContent == "flex-start" {
+		-webkit-align-content: flex-start;
+		-ms-flex-line-pack: start;
+		align-content: flex-start;
+	} @else if $alignContent == "flex-end" {
+		-webkit-box-align: end;
+		-webkit-align-items: flex-end;
+		-ms-flex-align: end;
+		align-items: flex-end;
+	} @else if $alignContent == "center" {
+		-webkit-align-content: center;
+		-ms-flex-line-pack: center;
+		align-content: center;
+	} @else if $alignContent == "stretch" {
+		-webkit-align-content: stretch;
+		-ms-flex-line-pack: stretch;
+		align-content: stretch;
+	} @else if $alignContent == "baseline" {
+		-webkit-align-content: baseline;
+		-ms-flex-line-pack: baseline;
+		align-content: baseline;
+	} @else {
+	@error "Whooops no value could be found for alignItems #{$alignItems}";
+	}
+}
+//Flex Order
+@mixin flexOrder($flexOrder) {
+	-webkit-box-ordinal-group: $flexOrder + 1;
+	-webkit-order: $flexOrder;
+	-ms-flex-order: $flexOrder;
+	order: $flexOrder;
+}
+//Flex Grow
+@mixin flexGrow($flexGrow) {
+	-webkit-box-flex: $flexGrow;
+	-webkit-flex-grow: $flexGrow;
+	-ms-flex-positive: $flexGrow;
+	flex-grow: $flexGrow;
+}
+//Flex Shrink
+@mixin flexShrink($flexShrink) {
+	-webkit-flex-shrink: $flexShrink;
+	-ms-flex-negative: $flexShrink;
+	flex-shrink: $flexShrink;
+}
+//Flex Basis
+@mixin flexBasis($flexBasis) {
+	-webkit-flex-basis: $flexBasis;
+	-ms-flex-preferred-size: $flexBasis;
+	flex-basis: $flexBasis;
+}
+//Align Content
+@mixin flexAlignSelf($alignSelf) {
+
+	@if $alignSelf == "flex-start" {
+		-webkit-align-self: flex-start;
+		-ms-flex-item-align: start;
+		align-self: flex-start;
+	} @else if $alignSelf == "flex-end" {
+		-webkit-align-self: flex-end;
+		-ms-flex-item-align: end;
+		align-self: flex-end;
+	} @else if $alignSelf == "center" {
+		-webkit-align-self: center;
+		-ms-flex-item-align: center;
+		align-self: center;
+	} @else if $alignSelf == "stretch" {
+		-webkit-align-self: stretch;
+		-ms-flex-item-align: stretch;
+		align-self: stretch;
+	} @else if $alignSelf == "baseline" {
+		-webkit-align-self: baseline;
+		-ms-flex-item-align: baseline;
+		align-self: baseline;
+	} @else if $alignSelf == "auto" {
+		-webkit-align-self: auto;
+		-ms-flex-item-align: auto;
+		align-self: auto;
+	}  @else {
+	@error "Whooops no value could be found for flexAlignSelf #{$alignSelf}";
+	}
+}
+//Flex Shorthand For flex-grow | flex-shrink | flex-basis
+@mixin flex($flexGrow, $flexShrink, $flexBasis) {
+	-webkit-box-flex: $flexGrow $flexShrink $flexBasis;
+	-webkit-flex: $flexGrow $flexShrink $flexBasis;
+	-ms-flex: $flexGrow $flexShrink $flexBasis;
+	flex: $flexGrow $flexShrink $flexBasis;
+}

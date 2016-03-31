@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Threadly</title>
+  <title>Threadly - <%= @title %></title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
@@ -12,12 +14,36 @@
 </head>
 <body>
   <header>
-    <h1>Threadly</h1>
+    <div class="container-fluid">
+      <h1 class="navbar-brand"><%= link_to "Threadly", '/' %></h1>
+
+      <% if current_user %>
+        <ul class="nav nav-pills navbar-right">
+          <li class="nav-name" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Number of posts: <%= current_user.posts.length %>">Hi, <%= current_user.first_name.capitalize %>!</li>
+          <li class="nav-action"><%= link_to "Log out", logout_path, method: "delete" %></li>
+        </ul>
+
+        <% else %>
+
+          <ul class="nav nav-pills navbar-right">
+              <li class="nav-action"><%= link_to "Login", 'login' %></a></li>
+              <li class="nav-action"><%= link_to "Signup", 'signup' %></a></li>
+          </ul>
+      <% end %>
+    </div>
   </header>
 
   <div class="error"> <%= flash[:notice] %> </div>
 
   <%= yield %>
 
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+    $('[data-toggle="textbox-popover"]').popover()
+  });
+</script>
 </body>
 </html>

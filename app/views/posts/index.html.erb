@@ -1,20 +1,35 @@
-<div class="container">
-  <h4>Enter new post: </h4>
-  <%= form_for @post do |f| %>
-    <div class="new_post">
-      <%= f.text_area :comment, :class => "text-box" %>
-    </div>
-    <div class="actions">
-    <%= f.submit "Create", class: "btn btn-primary rails-btn" %>
-    </div>
-  <% end %>
+<div class="container container-main">
+  <div class="post-wrapper">
+    <h4>Enter new post: </h4>
+    <%= form_for @post do |f| %>
+      <div class="new_post">
+        <%= f.text_area :comment, :class => "text-box" %>
+      </div>
+      <div class="actions">
+        <% if session[:user_id] != nil %>
+          <%= f.submit "Create", class: "btn btn-default btn-block" %>
+        <% else %>
+          <%= f.submit "Create", :class => "btn btn-default btn-block", :disabled => "disabled" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <ul class="posts">
     <% @all_posts.each do |p| %>
       <li><%= auto_link(p.comment) %><br>
-        <span class="timestamp"><%= p.created_at%></span>
-        <span class="delete">
-          <%= link_to 'Destroy', p, method: :delete, data: {confirm: 'Are you sure?' } %>
-        </span>
+
+        <% if current_user == p.user %>
+          <span class="user">posted by <span id="user-post">me</span>
+          <span class="timestamp">on <%= p.created_at%></span></span>
+          <span class="delete">
+            <%= link_to 'delete', p, method: :delete, data: {confirm: 'Are you sure you want to delete this post?' } %>
+          </span>
+
+        <% else %>
+          <span class="user">posted by <%= p.user.first_name.capitalize.strip %>
+          <span class="timestamp">on <%= p.created_at%></span></span>
+
+        <% end %>
       </li>
     <% end %>
   </ul>
