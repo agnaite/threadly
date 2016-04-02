@@ -1,3 +1,120 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$purple: #6B80D7;
+$off-white: #fafafa;
+$text-gray: #333333;
+$green: #69F0AE;
+
+// breakpoints:
+$phone: 640px;
+$tablet: 768px;
+$desktop: 1024px;
+
+@import '_flex-mixin';
+
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=submit],
+input[type=button] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+}
+
+* {
+  font-family: 'Lato', Arial, serif; font-weight: 400;
+}
+
+.container-user {
+
+  .user-img-about {
+    width: 100%;
+    @include displayFlex;
+    @include flexDirection(row);
+
+    img {
+      max-width: 25%;
+      margin: 20px 20px 40px 20px;
+    }
+    .user-about {
+      @include displayFlex;
+      @include flexDirection(column);
+      @include flexAlignItems(flex-start);
+
+      .user-name {
+        font-size: 26px;
+        color:  $text-gray;
+        margin-top: 20px;
+        margin-bottom: 0;
+      }
+      .user-num-posts,
+      .user-joined {
+        margin: 10px 0 0 0;
+        padding: 0;
+        font-size: 14px;
+        color: #aaa;
+      }
+
+    }
+  }
+
+
+}
+
+.posts {
+  list-style: none;
+  padding: 10px;
+  color: $text-gray;
+  margin-left: 25px;
+
+  @media (max-width: $phone) {
+    text-align: left;
+  }
+
+  li {
+    font-family: 'Menlo';
+    font-size: 18px;
+    padding-left: 6px;
+    margin-bottom: 12px;
+    border-left: 3px solid $purple;
+  }
+
+  .timestamp,
+  .user {
+    font-size: 12px;
+    font-weight: 300;
+    color: #aaa;
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    #user-post a {
+      color: $green;
+    }
+  }
+  .delete {
+    display: inline;
+    font-size: 10px;
+    padding: 2px 4px;
+    border: 1px solid $purple;
+    border-radius: 4px;
+    a {
+      text-decoration: none;
+      color: $purple;
+    }
+
+    &:hover {
+      border-color: $green;
+      a {
+        color: $green;
+      }
+    }
+  }
+}

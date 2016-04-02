@@ -1,7 +1,6 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 $purple: #6B80D7;
 $off-white: #fafafa;
 $text-gray: #333333;
@@ -206,8 +205,12 @@ header {
       font-weight: 300;
       color: #aaa;
 
-      #user-post {
-        color: $purple;
+      a:hover {
+        text-decoration: none;
+      }
+
+      #user-post a {
+        color: $green;
       }
     }
     .delete {

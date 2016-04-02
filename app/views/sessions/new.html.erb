@@ -1,6 +1,6 @@
 <h3>Log in</h3>
 <div class="container-fluid container-login ">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <%= form_for(:session, url: '/login') do |f| %>
       <div class="form-group">
         <%= f.email_field :email, :placeholder => "Email", :id => "inputEmail", :class => "form-control" %>
       </div>

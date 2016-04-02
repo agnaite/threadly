@@ -13,25 +13,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <div class="container-fluid">
-      <h1 class="navbar-brand"><%= link_to "Threadly", '/' %></h1>
 
-      <% if logged_in? %>
-        <ul class="nav nav-pills navbar-right">
-          <li class="nav-name" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Number of posts: <%= current_user.posts.length %>">Hi, <%= current_user.first_name.capitalize %>!</li>
-          <li class="nav-action"><%= link_to "Log out", logout_path, method: "delete" %></li>
-        </ul>
-
-        <% else %>
-
-          <ul class="nav nav-pills navbar-right">
-              <li class="nav-action"><%= link_to "Login", 'login' %></a></li>
-              <li class="nav-action"><%= link_to "Signup", 'signup' %></a></li>
-          </ul>
-      <% end %>
-    </div>
-  </header>
+  <%= render partial: "layouts/header" %>
 
   <div class="error"> <%= flash[:notice] %> </div>
 
@@ -42,7 +25,6 @@
 <script type="text/javascript">
   $(function () {
     $('[data-toggle="popover"]').popover()
-    $('[data-toggle="textbox-popover"]').popover()
   });
 </script>
 </body>
