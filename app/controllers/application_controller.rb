@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   helper_method :logged_in?
-  helper_method :highlight_mention
 
   def current_user
     # return the current user or a new "blank" user
@@ -18,5 +17,13 @@ class ApplicationController < ActionController::Base
   def require_user
     redirect_to '/' unless current_user
   end
+
+  # def auto_link_usernames(text)
+  #   text.gsub /@(\w+)/ do |username|
+  #     @user_mention = User.where(username: username.gsub('@', ''))
+  #     # puts "********************************"
+  #     link_to(username, user_path(@user_mention.id))
+  #   end.html_safe
+  # end
 
 end

@@ -16,7 +16,7 @@
   </div>
   <ul class="posts">
     <% @all_posts.each do |p| %>
-      <li><%= auto_link(p.comment) %><br>
+      <li><%= auto_link(auto_link_usernames(p.comment)) %><br>
         <% if current_user == p.user %>
           <span class="user">posted by <span id="user-post"><%= link_to 'me', p.user %></span>
           <span class="timestamp">on <%= p.created_at%></span></span>
