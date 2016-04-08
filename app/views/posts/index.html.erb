@@ -1,19 +1,18 @@
 <div class="container container-main">
-  <div class="post-wrapper">
-    <h4>Enter new post: </h4>
-    <%= form_for @post do |f| %>
-      <div class="new_post">
-        <%= f.text_area :comment, :class => "text-box" %>
-      </div>
-      <div class="actions">
-        <% if session[:user_id] != nil %>
+  <% if logged_in? %>
+    <div class="post-wrapper">
+      <h4>Enter new post: </h4>
+      <%= form_for @post do |f| %>
+        <div class="new_post">
+          <%= f.text_area :comment, :class => "text-box", :autofocus => true %>
+        </div>
+        <div class="actions">
           <%= f.submit "Create", class: "btn btn-default btn-block" %>
-        <% else %>
-          <%= f.submit "Create", :class => "btn btn-default btn-block", :disabled => "disabled" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <ul class="posts">
     <% @all_posts.each do |p| %>
       <li><%= auto_link(auto_link_usernames(p.comment)) %><br>
@@ -36,6 +35,7 @@
           </span>
         <% end %>
       </li>
+
     <% end %>
   </ul>
 </div>

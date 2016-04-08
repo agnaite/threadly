@@ -39,7 +39,6 @@ input[type=button] {
     @include flexDirection(row);
 
     img {
-      max-width: 25%;
       margin: 20px 20px 40px 20px;
     }
     .user-about {
@@ -51,14 +50,21 @@ input[type=button] {
         font-size: 26px;
         color:  $text-gray;
         margin-top: 20px;
-        margin-bottom: 0;
+        margin-bottom: 5px;
       }
+      .user-followers,
+      .user-following,
       .user-num-posts,
       .user-joined {
-        margin: 10px 0 0 0;
+        margin: 5px 0 0 0;
         padding: 0;
         font-size: 14px;
         color: #aaa;
+      }
+
+      #following,
+      #followers {
+        font-weight: 400;
       }
 
     }

@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  resources :users
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  
   resources :posts
   resources :sessions
+
+  get    'login'   => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'signup' => 'users#new', as: 'signup'
   post 'signup' => 'users#create'

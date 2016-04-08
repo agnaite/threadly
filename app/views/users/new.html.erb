@@ -2,7 +2,7 @@
 <div class="container-fluid container-signup">
     <%= form_for(@user) do |f| %>
       <div class="form-group">
-        <%= f.text_field :first_name, :placeholder => "First name", :class => "form-control" %>
+        <%= f.text_field :first_name, :placeholder => "First name", :class => "form-control",  :autofocus => true %>
       </div>
       <div class="form-group">
         <%= f.text_field :last_name, :placeholder => "Last name", :class => "form-control" %>

@@ -16,7 +16,7 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test 'it can be assigned to a user' do
-    user = User.create! password: 'atestpassword', first_name: 'Hector', last_name: 'Cat', email: 'hector@pivotbio.com'
+    user = User.create! password: 'atestpassword', first_name: 'Hector', last_name: 'Cat', username: "hector", email: 'hector@pivotbio.com'
     post = Post.new(comment: 'test', user: user)
     post.save!
     assert post.reload.user == user
