@@ -5,9 +5,10 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  
+
   resources :posts
   resources :sessions
+  resources :relationships, only: [:create, :destroy]
 
   get    'login'   => 'sessions#new'
   post 'login' => 'sessions#create'

@@ -1,12 +1,42 @@
 <div class="container-fluid container-user">
   <div class="user-img-about">
-    <%= image_tag ("profile.png") %>
+    <%= gravatar_for @user %>
     <div class="user-about">
       <h1 class="user-name"><%= @user.username %></h1>
-      <h3 class="user-followers"><%= @user.followers.count %> followers</h1>
-      <h3 class="user-following"><%= @user.following.count %> following</h1>
+
+      <% @user ||= current_user %>
+      <div class="stats">
+        <a href="<%= following_user_path(@user) %>">
+          <strong id="following" class="stat">
+            <h3 class="user-following"><%= @user.following.count %>
+          </strong>
+          following</h3>
+        </a>
+        <a href="<%= followers_user_path(@user) %>">
+          <strong id="followers" class="stat">
+            <h3 class="user-followers"><%= @user.followers.count %>
+          </strong>
+          followers</h3>
+        </a>
+      </div>
+
       <h3 class="user-num-posts"><%= @posts.count %> posts</h3>
       <h3 class="user-joined">Joined on: <%= @user.created_at.to_formatted_s(:date) %></h3>
+
+      <% if logged_in? && @user != current_user %>
+        <% if current_user.active_relationships.find_by(followed_id: @user.id) == nil %>
+          <%= form_for(current_user.active_relationships.build) do |f| %>
+            <div><%= hidden_field_tag :followed_id, @user.id %></div>
+            <%= f.submit "Follow", class: "btn btn-primary follow-btn" %>
+          <% end %>
+        <% end %>
+        <% if current_user.active_relationships.find_by(followed_id: @user.id) != nil %>
+          <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+                        html: { method: :delete }) do |f| %>
+            <%= f.submit "Unfollow", class: "btn unfollow-btn" %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div class= "container-posts">

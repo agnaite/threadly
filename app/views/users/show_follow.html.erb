@@ -1,0 +1,26 @@
+<div class="container-follow">
+<% provide(:title, @title) %>
+  <aside class="col-md-4 user-about">
+    <div class="user-img-about"><%= gravatar_for @user %></div>
+    <div class="user-info">
+      <h1 class="username"><%= @user.username %></h1>
+      <span><%= link_to "view my profile", @user %></span>
+      <span class="user-num-posts">Posts: <%= @user.posts.count %></span></div>
+    </aside>
+    <div class="follows">
+      <div class="follows-wrap">
+        <h3><%= @title %></h3>
+        <% if @users.any? %>
+          <ul class="users follow">
+            <% @users.each do |user| %>
+              <li class="follow-li">
+              <%= gravatar_for (user) %>
+                <span><%= link_to user.first_name + " " + user.last_name, user %></li></span>
+              </li>
+            <% end %>
+          </ul>
+          <%= will_paginate %>
+        <% end %>
+    </div>
+  </div>
+</div>
