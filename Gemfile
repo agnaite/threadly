@@ -27,7 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails_autolink'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'gemoji', '2.1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

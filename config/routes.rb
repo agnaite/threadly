@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new', as: 'signup'
   post 'signup' => 'users#create'
   delete 'login' => 'sessions#destroy', as: 'logout'
+  get 'feed' => 'posts#feed'
   root 'posts#index'
 
 

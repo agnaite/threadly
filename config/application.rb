@@ -27,5 +27,8 @@ module Threadly
     config.time_zone = 'Pacific Time (US & Canada)'
     config.active_record.default_timezone = :local
 
+    # emojis dawg
+    config.assets.paths << Emoji.images_path
+    config.assets.precompile << "emoji/**/*.png"
   end
 end

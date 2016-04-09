@@ -11,9 +11,9 @@ agne:
   email: agne@me.com
   password_digest: password
 
-austin:
-  first_name: austin
-  last_name: davis
-  username: austin
-  email: austin@me.com
+audy:
+  first_name: audy
+  last_name: richardson
+  username: audy
+  email: audy@me.com
   password_digest: password

@@ -18,12 +18,5 @@ class ApplicationController < ActionController::Base
     redirect_to '/' unless current_user
   end
 
-  # def auto_link_usernames(text)
-  #   text.gsub /@(\w+)/ do |username|
-  #     @user_mention = User.where(username: username.gsub('@', ''))
-  #     # puts "********************************"
-  #     link_to(username, user_path(@user_mention.id))
-  #   end.html_safe
-  # end
 
 end

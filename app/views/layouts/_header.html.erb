@@ -5,15 +5,15 @@
     <% if logged_in? %>
       <ul class="nav nav-pills navbar-right">
         <li class="nav-name" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Number of posts: <%= current_user.posts.length %>">Hi, <%= current_user.first_name.capitalize %>!</li>
-        <li class="nav-action"><%= link_to "Profile", current_user %></a></li>
-        <li class="nav-action"><%= link_to "Log out", logout_path, method: "delete" %></li>
+        <li class="nav-action"><%= link_to gravatar_for(current_user), current_user, class: "profile-link" %></li>
+        <li class="nav-action logout-link"><%= link_to "Log out", logout_path, method: "delete" %></li>
       </ul>
 
       <% else %>
 
         <ul class="nav nav-pills navbar-right">
-            <li class="nav-action"><%= link_to "Login", new_session_path %></a></li>
-            <li class="nav-action"><%= link_to "Signup", signup_path %></a></li>
+            <li class="nav-action login-link"><%= link_to "Login", new_session_path %></a></li>
+            <li class="nav-action signup-link"><%= link_to "Signup", signup_path %></a></li>
         </ul>
     <% end %>
   </div>

@@ -39,6 +39,8 @@ header {
 
   .navbar-brand {
     font-size: 32px;
+    padding-top: 25px;
+    padding-left: 10px;
 
     @media (max-width: $phone) {
       width: 100%;
@@ -57,23 +59,32 @@ header {
 
   .nav {
     padding-right: 30px;
+    padding-top: 5px;
 
     .nav-name {
-      padding-top: 35px;
+      padding-top: 40px;
 
       &:hover {
         cursor: pointer;
         color: $green;
       }
     }
-    .nav-action {
-      padding-left: 20px;
-      padding-top: 30px;
-
+    .logout-link {
+      padding-top: 35px;
+      padding-left: 10px;
+    }
+      .profile-link {
+        border: none;
+        img {
+          max-width: 60px;
+          border-radius: 40px;
+          margin: 15px 0;
+        }
+      }
       a {
         text-decoration: none;
         color: white;
-        padding: 4px 20px;
+        padding: 4px 10px;
         border: 1px solid white;
         border-radius: 4px;
 
@@ -82,6 +93,12 @@ header {
           color: $green;
           background-color: $purple;
         }
+      }
+
+      .signup-link,
+      .login-link {
+        padding: 35px 5px 35px 5px;
+
       }
     }
 
@@ -112,7 +129,6 @@ header {
       width: 100%;
     }
   }
-}
 
 .error {
   position: relative;
@@ -139,6 +155,15 @@ header {
   .post-wrapper {
     h4 {
       color: $purple;
+
+      a {
+        text-decoration: none;
+        font-size: 14px;
+
+        &:hover {
+          color: $green;
+        }
+      }
     }
 
     .text-box {
@@ -189,6 +214,17 @@ header {
 
     @media (max-width: $phone) {
       text-align: left;
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    .btn-feed,
+    .btn-home {
+      font-size: 11px;
+      margin-top: 35px;
+      margin-left: 10px;
     }
 
     li {
