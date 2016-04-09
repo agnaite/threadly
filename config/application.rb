@@ -30,5 +30,8 @@ module Threadly
     # emojis dawg
     config.assets.paths << Emoji.images_path
     config.assets.precompile << "emoji/**/*.png"
+
+    # log to stdout
+    config.logger = Logger.new(STDOUT)
   end
 end
