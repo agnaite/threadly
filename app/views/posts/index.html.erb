@@ -31,7 +31,7 @@
             <span class="user">
               posted
               <% unless p.user.nil? %>
-                by <%= link_to p.user.username.strip, p.user %>
+                by <%= link_to p.user.username.try(:strip), p.user %>
               <% end %>
               <span class="timestamp">
                 on <%= p.created_at%>
