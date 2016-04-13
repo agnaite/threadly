@@ -1,46 +1,17 @@
 <div class="container container-main">
-  <% if logged_in? %>
-    <div class="post-wrapper">
-      <h4>Enter new post: <a id="emoji-link" href="http://www.emoji-cheat-sheet.com/" target="_blank">(emoji cheat-sheet)</a></h4>
-      <%= form_for @post do |f| %>
-        <div class="new_post">
-          <%= f.text_area :comment, :class => "text-box", :autofocus => true %>
-        </div>
-        <div class="actions">
-          <%= f.submit "Create", class: "btn btn-default btn-block" %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
 
+  <%= render partial: 'layouts/form' %>
 
   <% if logged_in? %>
     <ul class="posts"><span>View:</span>
       <a class="btn btn-default btn-home" disabled>all posts</a>
       <a class="btn btn-default btn-feed" href="<%= 'feed' %>">only following</a>
-      <% @all_posts.each do |p| %>
-        <li><%= auto_link(emojify(auto_link_usernames(p.comment))) %><br>
-          <% if current_user == p.user %>
-            <span class="user">posted by <span id="user-post"><%= link_to 'me', p.user %></span>
-            <span class="timestamp">on <%= p.created_at%></span></span>
-            <span class="delete">
-              <%= link_to 'delete', p, method: :delete, data: {confirm: 'Are you sure you want to delete this post?' } %>
-            </span>
-
-          <% else %>
-            <span class="user">
-              posted
-              <% unless p.user.nil? %>
-                by <%= link_to p.user.username.try(:strip), p.user %>
-              <% end %>
-              <span class="timestamp">
-                on <%= p.created_at%>
-              </span>
-            </span>
-          <% end %>
-        </li>
-
+      <% @all_posts.each do |post| %>
+        <%= render partial: 'layouts/feed', :locals => { :post => post } %>
       <% end %>
     </ul>
+  <% else %>
+    <h1>Welcome to Threadly</h1>
+    <h4> Please <%= link_to "sign up", 'signup' %> or <%= link_to "log in", 'login' %> to post.</h4>
   <% end %>
 </div>

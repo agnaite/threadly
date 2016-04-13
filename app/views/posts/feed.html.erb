@@ -1,32 +1,16 @@
+<div class="container container-main">
 
+  <%= render partial: 'layouts/form' %>
 
-<% if logged_in? && current_user.active_relationships.count > 0 %>
-<ul class="posts"><span>View:</span>
-  <a class="btn btn-default btn-home" href="<%= '/' %>">all posts</a>
-  <a class="btn btn-default btn-feed" disabled>only following</a>
-    <% current_user.following.each do |p| %>
-    <% p.posts.reverse_each do |j| %>
-      <li><%= auto_link(emojify(auto_link_usernames(j.comment))) %><br>
-        <% if current_user == p %>
-          <span class="user">posted by <span id="user-post"><%= link_to 'me', p %></span>
-          <span class="timestamp">on <%= j.created_at%></span></span>
-          <span class="delete">
-            <%= link_to 'delete', p, method: :delete, data: {confirm: 'Are you sure you want to delete this post?' } %>
-          </span>
-
-        <% else %>
-          <span class="user">
-            posted
-            <% unless p.nil? %>
-              by <%= link_to p.username.try(:strip), p %>
-            <% end %>
-            <span class="timestamp">
-              on <%= j.created_at%>
-            </span>
-          </span>
+  <% if logged_in? %>
+    <ul class="posts"><span>View:</span>
+      <a class="btn btn-default btn-home" href="<%= '/' %>">all posts</a>
+      <a class="btn btn-default btn-feed" disabled>only following</a>
+      <% current_user.following.flatten.map.each do |f| %>
+        <% f.posts.each do |post| %>
+          <%= render partial: 'layouts/feed', :locals => { :post => post } %>
         <% end %>
-      </li>
       <% end %>
-    <% end %>
-  </ul>
-<% end %>
+    </ul>
+  <% end %>
+</div>

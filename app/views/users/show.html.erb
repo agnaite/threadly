@@ -42,7 +42,7 @@
   <div class= "container-posts">
     <ul class="posts">
       <% @posts.reverse_each do |post| %>
-        <li><%= auto_link(emojify(auto_link_usernames(post.comment))) %><br>
+        <li><%= auto_link(auto_link_usernames(post.comment)) %><br>
 
           <% if current_user == @user %>
             <span class="user">posted by <span id="user-post">me</span>

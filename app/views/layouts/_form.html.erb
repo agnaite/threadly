@@ -1,0 +1,13 @@
+<% if logged_in? %>
+  <div class="post-wrapper">
+    <h4>Enter new post:</h4>
+    <%= form_for @post do |f| %>
+      <div class="new_post">
+        <%= f.text_area :comment, :class => "text-box", :autofocus => true %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Create", class: "btn btn-default btn-block" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

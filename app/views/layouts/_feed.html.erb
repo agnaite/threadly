@@ -1,0 +1,21 @@
+
+  <li><%= auto_link(auto_link_usernames(post.comment)) %><br>
+    <% if current_user == post.user %>
+      <span class="user">posted by <span id="user-post"><%= link_to 'me', post.user %></span>
+      <span class="timestamp">on <%= post.created_at%></span></span>
+      <span class="delete">
+        <%= link_to 'delete', post, method: :delete, data: {confirm: 'Are you sure you want to delete this post?' } %>
+      </span>
+
+    <% else %>
+      <span class="user">
+        posted
+        <% unless post.user.nil? %>
+          by <%= link_to post.user.username.try(:strip), post.user %>
+        <% end %>
+        <span class="timestamp">
+          on <%= post.created_at%>
+        </span>
+      </span>
+    <% end %>
+  </li>

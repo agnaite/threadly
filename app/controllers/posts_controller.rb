@@ -7,6 +7,12 @@ class PostsController < ApplicationController
     @title = 'Home'
   end
 
+  def feed
+    @post = Post.new
+    @all_posts = Post.order(created_at: :desc).all
+    @title = 'Feed'
+  end
+
   def create
     @post = Post.new(post_params)
     @post.user ||= current_user
