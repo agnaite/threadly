@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_user, only: [:create, :destroy]
+  before_action :require_user, only: [:create, :destroy, :thread]
 
   def index
     @post = Post.new
@@ -14,12 +14,19 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user ||= current_user
-    if @post.save
-      redirect_to '/'
+    if params[:reposted_post_id].nil?
+      @post = Post.new(post_params)
+      @post.user ||= current_user
+      if @post.save
+        redirect_to '/'
+      else
+        redirect_to '/', notice: 'Comment cannot be blank.'
+      end
     else
-      redirect_to '/', notice: 'Comment cannot be blank.'
+      puts "****** IT IS HERE *******"
+      @post = Post.find_by_id(params[:reposted_post_id])
+      @post.user = current_user
+      redirect_to '/'
     end
   end
 
@@ -34,7 +41,6 @@ class PostsController < ApplicationController
   end
 
   private
-
   def post_params
     params.require(:post).permit(:comment)
   end

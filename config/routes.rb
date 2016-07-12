@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post 'signup' => 'users#create'
   delete 'login' => 'sessions#destroy', as: 'logout'
   get 'feed' => 'posts#feed'
+  post 'create' => 'posts#create', as: 'create_post'
   root 'posts#index'
 
 

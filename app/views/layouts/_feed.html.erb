@@ -8,6 +8,7 @@
       </span>
 
     <% else %>
+
       <span class="user">
         posted
         <% unless post.user.nil? %>
@@ -16,6 +17,8 @@
         <span class="timestamp">
           on <%= post.created_at%>
         </span>
-      </span>
+        <span class="repost">
+          <%= link_to('Repost', create_post_path, method: 'post', params: {reposted_post_id: post.id, comment: post.comment}) %>
+        </span>
     <% end %>
   </li>
